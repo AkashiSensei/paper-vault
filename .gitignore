@@ -1,0 +1,8 @@
+# Obsidian local workspace state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Local source files and attachments
+attachments/**/*.pdf
+attachments/**/*.epub
+attachments/**/*.djvu
