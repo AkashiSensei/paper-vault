@@ -53,8 +53,9 @@ indexes/
   venues/
   methods/
   datasets/
-  courses/
-  projects/
+  contexts/
+    courses.md
+    seminars.md
 inbox/
 templates/
 skills/
@@ -346,7 +347,20 @@ Suggest or update relevant indexes:
 - topic
 - method
 - dataset/benchmark
-- course/project, when relevant
+- reading context, when relevant, such as a course, seminar, reading group, or
+  project
+
+`indexes/contexts/` is opt-in. Do not update files such as
+`indexes/contexts/courses.md` or `indexes/contexts/seminars.md` unless the user
+explicitly names a course, seminar, reading group, project, or other reading
+context. When updating context indexes, follow the file's local grouping rule:
+courses use course names as `##` headings; seminars use dates as `##` headings.
+
+For all other index files, group entries by the paper note's ingest creation
+month. Use the ISO month from frontmatter `created`, formatted as `YYYY-MM`, as
+the `##` heading. If the note is newly created, set `created` first and use that
+month. If an existing note is being updated, keep its original creation month
+unless the user asks to reclassify the index history.
 
 Consider multiple simultaneous memberships. A paper may belong to several
 research areas at once, such as `LLM`, `AI Infrastructure`, `Cloud Computing`,
@@ -404,6 +418,7 @@ Before reporting completion, check:
 - not-ingested relation entries do not contain Obsidian wiki links
 - pending references to the newly ingested paper were searched and normalized
   when confidently matched
+- non-context index entries are grouped under the ingest creation month
 - no paper-note reverse index section was created
 - no local filesystem path, including local PDF paths, was written into
   `Source Notes` or other committed note content

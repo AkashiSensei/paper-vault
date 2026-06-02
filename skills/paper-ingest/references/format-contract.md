@@ -250,10 +250,17 @@ reference-list dump.
 
 ## Index Update Format
 
-Index files may link to paper notes with Obsidian wiki links. For example,
-inside `indexes/areas/AI Infrastructure.md`:
+Index files may link to paper notes with Obsidian wiki links.
+
+For index files outside `indexes/contexts/`, group entries by the paper note's
+ingest creation month. Use the ISO month from frontmatter `created`, formatted
+as `YYYY-MM`, as the `##` heading. Create the heading if it does not exist.
+
+For example, inside `indexes/areas/AI Infrastructure.md`:
 
 ```markdown
+## 2026-05
+
 - [[papers/wang2025jenga]]
   - Scenario: Long-Context Fine-Tuning
   - Why listed here: Uses token sparsity as an AI infrastructure technique for
@@ -263,6 +270,12 @@ inside `indexes/areas/AI Infrastructure.md`:
 Use broad research-area names that people commonly use in labs, courses, and
 reading groups. It is acceptable for one paper to appear in multiple broad areas
 and narrower scenarios.
+
+`indexes/contexts/` is an explicit-reading-context area. Do not update
+`indexes/contexts/courses.md`, `indexes/contexts/seminars.md`, or similar files
+unless the user explicitly provides that context. In `courses.md`, use course
+names as `##` headings. In `seminars.md`, use seminar dates as `## YYYY-MM-DD`
+headings.
 
 Do not create a reverse `Index Membership` section inside the paper note.
 Index files are the source of truth for navigation. Paper frontmatter may keep
@@ -297,6 +310,9 @@ Before reporting completion, verify:
 - Not-ingested relation targets do not contain Obsidian wiki links.
 - Newly ingested papers have been matched against old not-ingested relation
   blocks by title, authors, URL, and known identifiers where possible.
+- Non-context index entries are grouped under the ingest creation month.
+- Context indexes are updated only when the user explicitly names a course,
+  seminar, reading group, project, or similar context.
 - No reverse `Index Membership` section exists in the paper note.
 - No local filesystem path appears in `Source Notes` or committed note content.
 - No PDF file was added to the public repository.

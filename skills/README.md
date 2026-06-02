@@ -19,8 +19,11 @@ specific AI client or runtime.
 ## Design Highlights
 
 - Multi-dimensional indexing: one paper can appear in multiple area, scenario,
-  topic, method, venue, dataset, course, or project indexes. The vault does not
+  topic, method, venue, dataset, or reading-context indexes. The vault does not
   force a single taxonomy path.
+- Controlled index drift: general indexes are grouped by ingest creation month,
+  while explicit reading-context indexes such as courses and seminars are only
+  updated when the user names that context.
 - Applicability-aware notes: each paper should state its research area and use
   scenario, then separately explain the assumptions, constraints, non-goals, and
   cases where the result may weaken.
