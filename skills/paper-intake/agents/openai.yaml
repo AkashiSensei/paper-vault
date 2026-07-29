@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Intake"
+  short_description: "Run a configured recurring paper intake cycle"
+  default_prompt: "Use $paper-intake to run one configured paper discovery and ingestion cycle without staging or committing changes."

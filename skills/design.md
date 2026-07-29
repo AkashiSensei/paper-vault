@@ -12,6 +12,8 @@ Keep the workflow staged but not strictly linear:
 ```text
 discover -> ingest -> refine
                    \-> query
+
+paper-intake -> discover -> ingest
 ```
 
 Each skill has a clear boundary. Discovery should not pollute the formal vault,
@@ -37,20 +39,35 @@ direction.
 
 Responsibilities:
 
+- Read the current request and explicitly named Markdown briefs, in that
+  precedence order.
+- Inspect existing paper notes, indexes, and pending relation targets before
+  searching. Do not implicitly load intake-owned recommendation history.
 - Search papers using web search, arXiv, Semantic Scholar, OpenAlex, CrossRef,
   and citation traversal when available.
 - Expand and refine search queries, including synonyms and adjacent terms.
 - Follow backward and forward citations selectively, with relevance filters,
   deduplication, and depth limits.
-- Produce a candidate list with metadata, source links, relevance rationale, and
-  suggested priority.
-- Save discovery results to an inbox or discovery note when useful.
+- Verify candidate identity, official pages, legal full-text links, venue
+  signals, and changeable impact signals before recommending.
+- Evaluate requirement fit, paper quality, originality, applicability, vault
+  value, venue recognition, and age-aware influence without treating any one
+  signal as decisive.
+- Produce a ranked candidate list with recommendation reasons, caveats,
+  evidence confidence, and a suggested reading or ingestion order.
+- Return a complete result and save it under `inbox/discoveries/` only when the
+  user or calling workflow requests persistence.
 
 Non-goals:
 
-- Do not create formal `papers/*.md` notes by default.
+- Do not create formal `papers/*.md` notes; selected papers go through
+  `paper-ingest`.
 - Do not add every discovered paper to indexes.
 - Do not expand citation networks without relevance filtering.
+- Do not treat CCF/ICORE rank, citation count, or author affiliation as a
+  substitute for paper-level assessment.
+- Do not recommend already ingested work, explicitly excluded work, or duplicate
+  versions within the same result.
 
 ## `paper-ingest`
 
@@ -76,6 +93,49 @@ Non-goals:
 - Do not store copyrighted PDFs in the public repository.
 - Do not convert the full reference list into wiki links.
 - Do not broadly rewrite old paper notes unless explicitly requested.
+
+## `paper-intake`
+
+Run one configuration-driven discovery and ingestion cycle for a manual or
+scheduled recurring workflow.
+
+Responsibilities:
+
+- Read an explicitly named Markdown configuration or the repository default.
+- Stop when `papers/` contains unfinished staged, unstaged, or untracked work.
+- Own saved candidate history and calculate a lightweight rolling balance from
+  up to fourteen recent run results, treating fewer than seven as warm-up.
+- Use cross-run balance to choose one shared learning theme, then keep the
+  current run internally connected through progression, contrast, or
+  complementary evidence.
+- Build a self-contained search brief and delegate candidate discovery to
+  `paper-discover`.
+- Select a connected qualified subset and delegate canonical note creation to
+  `paper-ingest`; ingest fewer papers rather than an unrelated set.
+- When an external PDF destination is configured, require a verified legal PDF,
+  use that exact file as the ingestion source, and deliver it outside the vault
+  after the canonical note is created.
+- Return a human-readable learning brief that first explains the history- and
+  configuration-grounded choice of today's research question, then gives each
+  candidate's core contribution, recommendation reason, relationship, and
+  status, followed by the ingestion rationale and reading order. Put file and
+  Git details last.
+- Leave generated candidates, notes, and index edits unstaged and uncommitted
+  for human review.
+
+Non-goals:
+
+- Do not create or manage the external schedule.
+- Do not make `paper-discover` or `paper-ingest` read intake configuration or
+  recurring-run history.
+- Do not treat an unselected historical candidate as rejected or permanently
+  excluded.
+- Do not mix unrelated research directions merely to improve balance statistics
+  within one run.
+- Do not put source PDFs, symlinks to them, or machine-specific local paths in
+  the repository.
+- Do not duplicate the discovery, verification, or ingestion rules owned by
+  the lower-level skills.
 
 ## `paper-refine`
 
@@ -126,13 +186,19 @@ Non-goals:
 ## Shared Rules
 
 - A formal paper note is created only by `paper-ingest`.
+- Discovery requirements use this precedence: current user request, explicitly
+  named Markdown brief, then skill defaults.
+- Skill dependencies are one-way: `paper-intake` composes `paper-discover` and
+  `paper-ingest`; neither lower-level skill depends on intake configuration,
+  scheduling, or history.
 - `paper-query` and `paper-refine` are parallel consumers of ingested notes;
   refinement is optional, not a prerequisite for retrieval.
 - A new paper should link to previous work from the new note; old notes do not
   need to be manually backfilled with every later paper.
 - Relation links should be semantic, not just bibliographic.
 - Public repository contents should be Markdown-first. PDF originals should stay
-  local, in Zotero, or in another private storage location, with links recorded
-  in frontmatter.
+  local, in Zotero, or in another private storage location. Record stable
+  official and legal source URLs in committed notes, not machine-specific local
+  paths.
 - Metadata and relation formats should remain machine-readable enough for future
-  automation.
+  workflows.

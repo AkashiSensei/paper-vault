@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Discover"
+  short_description: "Search, screen, and rank papers for this vault"
+  default_prompt: "Use $paper-discover to recommend verified papers that match my research goals and complement this vault."

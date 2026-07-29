@@ -6,3 +6,6 @@
 attachments/**/*.pdf
 attachments/**/*.epub
 attachments/**/*.djvu
+
+# Personal paper-intake preferences
+paper-intake-config.md

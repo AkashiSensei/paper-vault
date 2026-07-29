@@ -10,7 +10,8 @@ small task designs.
 - [Orchestra-Research/AI-Research-SKILLs](https://github.com/Orchestra-Research/AI-Research-SKILLs)
 - [Imbad0202/academic-research-skills-codex](https://github.com/Imbad0202/academic-research-skills-codex)
 - [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills)
-- [brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research](https://github.com/brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research)
+- [brycewang-stanford/Auto-Empirical-Research-Skills](https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills)
+  (renamed from `Awesome-Agent-Skills-for-Empirical-Research`)
 
 ## Cross-Cutting References
 
@@ -67,7 +68,7 @@ Use in `paper-vault`:
 
 Source:
 
-- `brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research`
+- `brycewang-stanford/Auto-Empirical-Research-Skills`
 - Path: `skills/05-kthorn-research-superpower/research/searching-literature`
 
 Useful patterns:
@@ -79,16 +80,17 @@ Useful patterns:
 
 Use in `paper-vault`:
 
-- `paper-discover` should produce an inbox/discovery note with candidate papers,
-  relevance rationale, source links, and suggested priority.
-- It should not create formal `papers/*.md` files unless the user explicitly asks
-  for ingestion.
+- `paper-discover` should return candidate papers with relevance rationale,
+  source links, and suggested priority, and optionally persist that result as an
+  inbox/discovery note when the caller needs history.
+- It should not create formal `papers/*.md` files. User-selected candidates
+  should be handed to `paper-ingest`.
 
 ### Traversing Citation Networks
 
 Source:
 
-- `brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research`
+- `brycewang-stanford/Auto-Empirical-Research-Skills`
 - Path: `skills/05-kthorn-research-superpower/research/traversing-citations`
 
 Useful patterns:
@@ -105,6 +107,82 @@ Use in `paper-vault`:
 - Candidate notes should record why a paper was found, such as
   `backward_from: [[Seed Paper]]` or `forward_from: [[Seed Paper]]`.
 - Citation traversal is for discovery, not automatic relation creation.
+
+### Multi-Method Paper Recommendation
+
+Source:
+
+- `brycewang-stanford/Auto-Empirical-Research-Skills`
+- Path:
+  `skills/43-wentorai-research-plugins/skills/literature/discovery/paper-recommendation-guide`
+
+Useful patterns:
+
+- Combine keyword search with semantic similarity, direct citations,
+  co-citation, bibliographic coupling, and concept-based discovery.
+- Use different strategies for foundational, frontier, and interdisciplinary
+  recommendations.
+- Keep a triaged reading queue rather than accumulating an unbounded list.
+
+Use in `paper-vault`:
+
+- `paper-discover` should generate a mixed candidate pool and verify candidates
+  independently of the service that surfaced them.
+- Recommendation tools are candidate generators, not bibliographic or quality
+  authorities.
+- Final results should be short, prioritized, and connected to a concrete
+  reading or ingestion order.
+
+### Candidate Quality, Verification, And Calibration
+
+Sources:
+
+- `Imbad0202/academic-research-skills`
+- Paths:
+  - `deep-research/references/source_quality_hierarchy.md`
+  - `deep-research/references/semantic_scholar_api_protocol.md`
+  - `deep-research/references/openalex_api_protocol.md`
+  - `academic-paper-reviewer/references/quality_rubrics.md`
+
+Useful patterns:
+
+- Separate identity verification from paper-quality assessment.
+- Cross-check DOI lookups against normalized titles so a resolvable but wrong
+  DOI is not accepted.
+- Treat a missing Semantic Scholar or OpenAlex match as a coverage gap, not
+  proof of fabrication.
+- Evaluate originality, methodology, evidence, and applicability separately.
+- Treat rubric scores as ordinal ranking aids rather than calibrated acceptance
+  probabilities.
+- Adapt evidence expectations to the field and paper type.
+
+Use in `paper-vault`:
+
+- `paper-discover` should verify candidates across primary pages and structured
+  indexes, record uncertainty, and degrade gracefully when one service fails.
+- Recommendation ranking should combine requirement fit, technical quality,
+  originality, applicability, vault value, venue recognition, and age-aware
+  influence.
+- A recent paper should not be penalized merely because its citation window is
+  short.
+
+### Dynamic Venue Signals
+
+Authoritative sources checked during the 2026-07 implementation:
+
+- [CCF recommended international venues](https://www.ccf.org.cn/Academic_Evaluation/By_category/)
+- [ICORE conference rankings](https://www.core.edu.au/icore-portal)
+- [DBLP computer science bibliography](https://dblp.org/)
+
+Use in `paper-vault`:
+
+- Verify the current edition and exact venue instead of hard-coding a permanent
+  CCF or ICORE list into the skill.
+- Distinguish conference full/regular papers from workshop, short, demo, poster,
+  findings, and abstract tracks.
+- Use CCF as a relevant Chinese academic signal and ICORE as a complementary
+  international computer-science conference signal.
+- Do not infer individual-paper quality directly from venue rank.
 
 ### Literature Monitoring Strategies
 
@@ -197,7 +275,7 @@ Use in `paper-vault`:
 
 Source:
 
-- `brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research`
+- `brycewang-stanford/Auto-Empirical-Research-Skills`
 - Path: `skills/43-wentorai-research-plugins/skills/research/paper-review/paper-reading-assistant`
 
 Useful patterns:
@@ -219,7 +297,7 @@ Use in `paper-vault`:
 
 Source:
 
-- `brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research`
+- `brycewang-stanford/Auto-Empirical-Research-Skills`
 - Path: `skills/43-wentorai-research-plugins/skills/research/paper-review/paper-reading-assistant`
 
 Useful patterns:
@@ -263,7 +341,7 @@ Use in `paper-vault`:
 
 Source:
 
-- `brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research`
+- `brycewang-stanford/Auto-Empirical-Research-Skills`
 - Path: `skills/43-wentorai-research-plugins/skills/writing/citation/obsidian-citation-guide`
 
 Useful patterns:
@@ -285,7 +363,7 @@ Use in `paper-vault`:
 
 Source:
 
-- `brycewang-stanford/Awesome-Agent-Skills-for-Empirical-Research`
+- `brycewang-stanford/Auto-Empirical-Research-Skills`
 - Path: `skills/43-wentorai-research-plugins/skills/tools/knowledge-graph/citation-network-builder`
 
 Useful patterns:
