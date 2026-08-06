@@ -36,7 +36,16 @@ updated: null
 
 ## Summary
 
-One to three sentences explaining what the paper does and why it matters.
+Write a compact pre-reading overview in the same configured language as the
+rest of the note. Use the small Markdown structure that best explains the
+paper—short paragraphs, bullets, numbered steps, a compact flow, a tiny table,
+or a restrained combination—without forcing every paper into one layout.
+
+Give the reader a mental model of the motivating question, the paper's
+progression, the core logic connecting its major parts, and why the result
+matters. Mention major modules when they clarify the map, but leave detailed
+component descriptions, interfaces, evidence, and caveats to the later
+sections.
 
 ## Problem
 
@@ -106,9 +115,11 @@ component, explain its interface close to the description:
 
 ## Experiments And Evidence
 
-- What does the paper evaluate?
-- What baselines, datasets, workloads, or metrics are used?
-- What are the most important results?
+When appropriate, organize this section as a high-level comparison map:
+what is compared, selected evidence, what the result supports, and where it
+appears in the original paper. Use representative results rather than copying
+complete tables. Supplement or replace the map when another evidence form is
+needed to preserve important results.
 
 ## Contributions
 

@@ -1,6 +1,6 @@
 ---
 name: paper-ingest
-description: Add a specified academic paper to an Obsidian-style paper vault as a structured, verified Markdown note. Use when the user provides a paper title, DOI, arXiv ID, URL, PDF link, citation, or discovery item and wants it analyzed and added to the knowledge base.
+description: Add or revise a specified academic paper in an Obsidian-style paper vault as a structured, verified Markdown note. Use when the user provides a paper title, DOI, arXiv ID, URL, PDF link, citation, or discovery item and wants it analyzed, added, or substantively updated, including user-directed revisions to an existing ingest.
 ---
 
 # Paper Ingest
@@ -12,11 +12,12 @@ but ingestion creates the canonical paper note.
 ## Scope
 
 Use this skill when the user provides a specific paper and asks to add it,
-analyze it, summarize it, or put it into the vault.
+analyze it, summarize it, put it into the vault, or substantively revise its
+canonical paper note.
 
 Do not use this skill for broad literature search, reading guidance on an
-existing note, or vault-wide synthesis unless ingestion is explicitly part of
-the task.
+existing note, or vault-wide synthesis unless ingestion or note revision is
+explicitly part of the task.
 
 ## Core Rules
 
@@ -39,6 +40,8 @@ the task.
   broadly backfill old notes unless the user asks.
 - Preserve the difference between paper-grounded claims, AI analysis, and user
   interpretation.
+- Mark substantive user-directed revisions to existing notes using the compact
+  blockquote convention in `references/format-contract.md`.
 
 ## Vault Assumptions
 
@@ -146,6 +149,11 @@ Before creating a new note, search existing paper notes by:
 If a matching note exists, update it only if the user wants ingestion to enrich
 the existing note. Avoid creating duplicates.
 
+For a substantive user-directed revision, update the matching canonical note
+and follow `User-Directed Revision Markers` in
+`references/format-contract.md`. Do not add a marker for read-only review,
+initial ingestion, typo fixes, or formatting-only changes.
+
 ### 4. Resolve Pending References To This Paper
 
 Before finalizing the citekey, search existing vault notes for relation entries
@@ -208,7 +216,8 @@ contract in `references/format-contract.md`.
 
 Write an initial note that is useful before deep human reading:
 
-- concise summary
+- reader-oriented summary that establishes the paper's throughline and core
+  logic before the detailed sections
 - research area and use scenario
 - assumptions and applicability boundaries, separated from research positioning
 - problem
@@ -220,7 +229,21 @@ Write an initial note that is useful before deep human reading:
 - relation blocks
 - index file updates, without writing reverse index links into the paper note
 
-Keep summaries factual and source-grounded. If the paper text is unavailable,
+Treat `Summary` as a compact pre-reading guide, not as a fixed one-to-three
+sentence abstract rewrite. Choose the small Markdown structure that best fits
+the paper: short paragraphs, bullets, numbered steps, a compact flow, a tiny
+table, or a restrained combination of these. It should help the reader grasp
+the paper's motivating question, overall progression, core logic, and why the
+work matters before encountering module-level detail. It may name major
+components and show how they connect, but leave their fuller descriptions,
+interfaces, experiments, and caveats to the later sections.
+
+Write `Summary` in the same configured language as the rest of the paper note.
+Do not add a separate language rule for this section. For example, when the
+calling intake configuration requests English paper notes, write the summary in
+English as well.
+
+Keep the summary factual and source-grounded. If the paper text is unavailable,
 base the note on verified abstracts and official metadata, and mark analysis
 confidence accordingly.
 
@@ -255,6 +278,26 @@ Example of component/interface clarity:
   - Minimal example: Given a 32k-token document and a 25% token budget, the
     selector keeps tokens tied to the target answer and removes repeated boilerplate.
 ```
+
+For `Experiments And Evidence`, first determine whether the paper supports a
+useful comparison map across baselines, ablations, variants, settings, or
+evidence sources. When it does, organize the section at a high level around:
+
+- what is compared;
+- one or two representative results, when useful;
+- what the comparison supports;
+- where the evidence appears in the original paper.
+
+Use “supports” rather than “proves” unless the source establishes a formal
+result. Prefer representative numbers over reproducing complete result tables.
+Separate controlled quantitative comparisons from qualitative examples and
+state important reporting boundaries or confounds.
+
+Do not force every paper into a comparison map. Supplement or replace it when
+important evidence is better expressed as a theorem, proof, system profile,
+dataset analysis, user study, case study, negative result, or another
+paper-appropriate form. Follow the detailed selection and formatting guidance
+in `references/format-contract.md`.
 
 Keep `Research Area And Scenario` separate from `Assumptions And Scope`.
 `Research Area And Scenario` should classify and position the paper: areas,
@@ -413,6 +456,9 @@ Before reporting completion, check:
 - one canonical note exists for the paper
 - all required frontmatter keys are present
 - required headings are present in order
+- `Experiments And Evidence` uses a comparison map when it clarifies the
+  evidence, includes original-paper locations, and preserves important evidence
+  that the map cannot cover
 - unknown facts are marked as unknown rather than guessed
 - relation types come from the allowed set
 - not-ingested relation entries do not contain Obsidian wiki links
@@ -423,6 +469,8 @@ Before reporting completion, check:
 - no local filesystem path, including local PDF paths, was written into
   `Source Notes` or other committed note content
 - no PDF file was added to the public repository
+- user-directed revision markers precede the affected content or sit directly
+  below its heading, with no stacked markers at the same location
 
 ## Failure Handling
 

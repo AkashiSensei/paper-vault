@@ -76,6 +76,72 @@ Do not create a `My Understanding` section during ingestion. User
 interpretation belongs to later reading/refinement workflows, not the initial
 paper note.
 
+## User-Directed Revision Markers
+
+When a user explicitly asks an agent to make a substantive content or
+organization change to an existing canonical paper note, add one compact,
+portable Markdown blockquote describing what changed.
+
+For an English note:
+
+```markdown
+> **User-directed revision:** Briefly state what changed at the user's request.
+```
+
+For a Chinese note:
+
+```markdown
+> **用户指导修订：** 简要说明根据用户要求修改了什么。
+```
+
+Place the marker where a top-to-bottom reader will see it before the revised
+material:
+
+- If the revision affects a whole section or subsection, put the marker
+  immediately below that heading and before the section body.
+- If the revision affects only a local paragraph, list, table, or other block,
+  put the marker immediately before that block.
+- Do not put the marker after the revised material as an end note.
+
+Keep at most one marker at each affected location. If later user requests
+change the same location, rewrite the existing marker to merge the changes into
+one concise sentence instead of appending or stacking markers. State only what
+changed; omit the original conversation, date, identifier, and edit history.
+Use the note's configured language.
+
+The marker records revision provenance, not epistemic status. Continue to
+distinguish paper-grounded claims, analytical interpretation, and user
+interpretation in the revised content itself. Do not add markers for initial
+ingestion, read-only review, typo fixes, or formatting-only changes.
+
+## Summary As Pre-Reading Orientation
+
+Use `Summary` to establish an overall mental model before the reader enters the
+detailed sections. It is not limited to one to three sentences and should not
+be treated as a lightly rewritten abstract.
+
+Choose the structure that best fits the paper. A summary may use:
+
+- short prose paragraphs;
+- bullets or numbered steps;
+- a compact textual or Mermaid flow when sequence or dependency matters;
+- a small comparison or mapping table;
+- restrained `###` subheadings when they materially improve orientation.
+
+Use only the formats that help; do not require every summary to contain all of
+them. Keep the section compact relative to the full note and optimize it for
+pre-reading comprehension. Explain the motivating question, the paper's
+throughline, the core logic connecting its major parts, and why the work
+matters. The summary may introduce major modules and their relationships, but
+leave module interfaces, detailed experimental results, assumption analysis,
+and full caveats to their canonical later sections.
+
+Keep every claim source-grounded and distinguish the paper's claims from
+analytical interpretation when necessary. Write the summary in the same
+configured language as the rest of the paper note; never infer or impose a
+separate summary language. If the caller or intake configuration requests
+English paper notes, the summary must also be in English.
+
 ## Research Positioning vs Applicability
 
 Keep `Research Area And Scenario` and `Assumptions And Scope` separate:
@@ -166,6 +232,48 @@ Guidelines:
 - For papers without explicit components or models, apply the same input/output
   discipline to the main procedure, experimental setup, theorem statement,
   benchmark construction, or analytical framework where useful.
+
+## Experiments And Evidence As A Comparison Map
+
+Prefer a high-level comparison map when the paper develops its claims through
+multiple meaningful contrasts: baselines, ablations, variants, hybrid methods,
+scaling conditions, training regimes, robustness tests, failure modes, transfer
+settings, or human interventions.
+
+Use a compact table or nested bullets. A useful default shape is:
+
+```markdown
+- **Method or condition A vs. B → high-level finding.**
+  - Selected evidence: One or two representative results or observations.
+  - Supports: The conclusion this evidence reasonably supports.
+  - Original: Section, table, figure, or appendix location.
+```
+
+Apply these rules:
+
+- Keep the section at the level of the paper's argument, not a transcription of
+  every benchmark row.
+- Include only representative numbers that make the comparison legible; do not
+  reproduce complete result tables by default.
+- Treat `Supports` as the inference enabled by the evidence, distinct from the
+  experimental setup and the observed metric.
+- Say “supports” rather than “proves” unless the source supplies a formal proof.
+- Give an original-paper location for each comparison when the source is
+  available; do not invent a location from abstract-only evidence.
+- Preserve mixed or negative results and new failure modes instead of reporting
+  only the best score.
+- Do not assign a separate causal contribution to each capability when one
+  ablation changes several capabilities together.
+- Separate controlled quantitative comparisons from qualitative examples, and
+  label single cases as qualitative evidence.
+- Add a short boundary note for material confounds such as best-of-prompt
+  reporting, unmatched training budgets, external routing rules, or missing
+  uncertainty estimates.
+
+Do not use the comparison map as an exclusive format. Supplement or replace it
+when important evidence is better represented by formal results, proofs,
+system profiles, dataset coverage, user studies, longitudinal results, case
+studies, negative findings, or other paper-specific evidence.
 
 ## Relation Block Format
 
@@ -304,6 +412,12 @@ Before reporting completion, verify:
 
 - There is exactly one H1 title.
 - All required headings exist in the required order.
+- `Summary` gives a compact pre-reading map of the paper's throughline and core
+  logic, uses the note's configured language, and is not forced into a rigid
+  layout.
+- `Experiments And Evidence` uses a high-level comparison map when appropriate,
+  points to original-paper locations, and retains important non-comparative
+  evidence in another suitable form.
 - Frontmatter values follow the controlled formats.
 - Unknown facts are marked as unknown, not guessed.
 - Relation entries use allowed relation types.
@@ -316,3 +430,5 @@ Before reporting completion, verify:
 - No reverse `Index Membership` section exists in the paper note.
 - No local filesystem path appears in `Source Notes` or committed note content.
 - No PDF file was added to the public repository.
+- Every substantive user-directed revision marker appears before the affected
+  content or directly below its heading, and no location has stacked markers.
