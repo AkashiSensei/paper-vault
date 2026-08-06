@@ -1,3 +1,6 @@
+# macOS Finder metadata
+.DS_Store
+
 # Obsidian local client state for now.
 # Revisit this if the vault later needs shared snippets, templates, or plugin config.
 .obsidian/
