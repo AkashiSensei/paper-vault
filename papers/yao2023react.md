@@ -49,7 +49,7 @@ verification_notes:
   - "The principal method is few-shot prompting of frozen PaLM-540B; the separate PaLM-8B and PaLM-62B trajectory fine-tuning experiment is not treated as the main ReAct setup."
   - "No ICLR publisher DOI was identified; the arXiv DataCite DOI is not stored as a venue DOI."
 created: 2026-07-29
-updated: 2026-08-05
+updated: 2026-08-09
 ---
 
 # ReAct: Synergizing Reasoning and Acting in Language Models
@@ -338,6 +338,21 @@ are prompt-sensitive or qualitative.
 - Reasoning-only and externally grounded methods are complementary rather than universally ordered; the hybrid results make this explicit.
 - The method's apparent generality depends on task-specific text adapters and demonstrations.
 - The original evidence supports controlled text agents, not unrestricted, multimodal, or safety-critical autonomy.
+
+## Related-Work Research Lines
+
+> **User-directed revision:** Added a compact map of Section 5's two related-work lines and an analytical interpretation of their underlying research problems.
+
+**Paper-grounded organization.** Section 5 uses two explicit top-level lines. `Language model for reasoning` covers CoT and follow-up prompting, structured-reasoning, and rationale-training methods. `Language model for decision making` covers language models used as policies in browser interaction, dialogue and API calling, and embodied planning. WebGPT, SayCan, and Inner Monologue belong to this second line; SayCan and Inner Monologue are not additional top-level routes.
+
+**Analytical boundary:** This is best read as a ReAct-centered organization of related work, not as a comprehensive taxonomy of all agent research.
+
+| Line                | Paper-grounded focus                                                                                                                                                                                                          | Analytical interpretation — not stated as a formal taxonomy by the paper                                                                                                                                                                                                                                                                                     |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Reasoning**       | Produce intermediate reasoning procedures rather than map a problem directly to its answer. Earlier methods mainly reason over a fixed input and the model's internal knowledge.                                              | The deeper problem is how to make difficult internal computation manageable: select relevant information, decompose a problem, create intermediate representations, maintain working memory, combine partial conclusions, and check or revise them. A reasoning step primarily changes the model's textual or computational context, not the external world. |
+| **Decision making** | Use a language model as a policy that selects actions in interactive environments. Prior systems include browser navigation, API decisions, robotic action planning, affordance grounding, and injected environment feedback. | The deeper problem is closed-loop control under partial observability and temporal consequences: infer a belief state from history and observations, ground language in valid and feasible actions, obtain useful feedback, track progress, consider future effects, and recover when an action or plan fails.                                               |
+
+**ReAct as the bridge.** The paper explicitly positions ReAct as integrating reasoning with actions and their observations in one stream. **Analytical interpretation:** Thought updates the agent's internal working state and plan; Action queries or changes the external environment; Observation updates the external evidence available to the next decision. ReAct therefore couples two kinds of state update: reasoning helps determine what to do, while interaction changes what can be known and reasoned about next.
 
 ## Appendix Guide
 
