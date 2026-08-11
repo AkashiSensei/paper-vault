@@ -3,5 +3,6 @@
 ## 2026-07
 
 - [[papers/yao2023react]]
-  - Year: 2023.
-  - Why listed here: Published at the Eleventh International Conference on Learning Representations.
+  - Title: ReAct: Synergizing Reasoning and Acting in Language Models
+  - Publication: Eleventh International Conference on Learning Representations (ICLR 2023).
+  - Why listed here: Introduces and evaluates a prompting method that unifies language-model reasoning with environment interaction.

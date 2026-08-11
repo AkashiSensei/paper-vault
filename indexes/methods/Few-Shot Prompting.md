@@ -3,5 +3,7 @@
 ## 2026-07
 
 - [[papers/yao2023react]]
-  - Scenario: Text-based agent interaction.
-  - Why listed here: Uses annotated trajectories as in-context demonstrations for a frozen language-model policy.
+  - Title: ReAct: Synergizing Reasoning and Acting in Language Models
+  - Role in paper: Primary policy-specification method in the main ReAct setup.
+  - Mechanism: Places annotated Thought/Action/Observation trajectories in context to demonstrate reasoning behavior and action syntax.
+  - Why listed here: Shows that a frozen language model can acquire the ReAct interaction protocol without parameter updates.

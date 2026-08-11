@@ -26,7 +26,6 @@ topics:
   - Token Sparsity
   - Parameter-Efficient Fine-Tuning
 areas:
-  - LLM
   - AI Infrastructure
   - Systems
   - Cloud Computing
@@ -54,7 +53,7 @@ verification_notes:
   - "The arXiv record 2501.09767 appears to be the preprint version under the earlier title 'LeMo: Enabling LEss Token Involvement for MOre Context Fine-tuning'; it has matching authors and technical content."
   - "A secondary ACM DL-style search result listed 10.5555/3768039.3768047, but USENIX and DBLP metadata did not expose a DOI, so doi is kept null."
 created: 2026-05-30
-updated: 2026-06-02
+updated: 2026-08-09
 ---
 
 # JENGA: Enhancing LLM Long-Context Fine-tuning with Contextual Token Sparsity
@@ -69,10 +68,12 @@ Long-context applications require LLMs to handle sequences beyond their pretrain
 
 ## Research Area And Scenario
 
-- Area(s): LLM, AI Infrastructure, Systems, and Cloud Computing.
+> **User-directed revision:** Reclassified LLM as the workload/domain rather than a research area; retained AI Infrastructure, Systems, and Cloud Computing as the primary areas.
+
+- Area(s): AI Infrastructure, Systems, and Cloud Computing.
 - Scenario(s): Long-context LLM fine-tuning, especially training runs that extend pretrained models to longer context windows and become limited by activation memory and training throughput.
 - Why it matters here: JENGA sits at the intersection of model adaptation and systems optimization: it is not a new LLM architecture, but a training-system technique that makes long-context fine-tuning more memory- and time-efficient.
-- Indexing rationale: It belongs in LLM because the target workload is long-context adaptation; in AI Infrastructure and Systems because the contribution depends on predictors, token elimination, and custom kernels; and in Cloud Computing when viewed through GPU resource efficiency for large training jobs.
+- Indexing rationale: It belongs in AI Infrastructure and Systems because the contribution depends on predictors, token elimination, and custom kernels, and in Cloud Computing through GPU resource efficiency for large training jobs. Long-context LLM adaptation remains the workload context through LLM-specific tags, topics, and scenarios.
 
 ## Assumptions And Scope
 

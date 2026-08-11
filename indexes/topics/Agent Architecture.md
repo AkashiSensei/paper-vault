@@ -3,5 +3,6 @@
 ## 2026-07
 
 - [[papers/wang2024autonomousagents]]
-  - Scenario: Agent System Design.
-  - Why listed here: Proposes a profile–memory–planning–action vocabulary for comparing early LLM-agent systems.
+  - Title: A survey on large language model based autonomous agents
+  - Topic focus: Profile, memory, planning, action, and environment feedback.
+  - Why listed here: Provides a common modular vocabulary for comparing how early LLM-agent systems sustain state, choose futures, and act.

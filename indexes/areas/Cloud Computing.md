@@ -2,4 +2,7 @@
 
 ## 2026-05
 
-- [[papers/wang2025jenga]] - Relevant to cloud GPU resource efficiency when long-context fine-tuning is limited by activation memory.
+- [[papers/wang2025jenga]]
+  - Title: JENGA: Enhancing LLM Long-Context Fine-tuning with Contextual Token Sparsity
+  - Subarea: GPU resource efficiency for long-context training jobs.
+  - Why listed here: Makes longer-context adaptation feasible within fixed accelerator memory and reduces GPU time, the resource-efficiency concern behind its Cloud Computing classification.

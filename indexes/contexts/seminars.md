@@ -2,4 +2,6 @@
 
 ## 2026-06-05
 
-- [[papers/wang2025jenga]] - RAIDS-Lab Seminar paper on contextual token sparsity for memory-efficient long-context LLM fine-tuning.
+- [[papers/wang2025jenga]]
+  - Title: JENGA: Enhancing LLM Long-Context Fine-tuning with Contextual Token Sparsity
+  - Seminar focus: Contextual token sparsity and systems co-design for memory-efficient long-context fine-tuning.

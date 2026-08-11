@@ -3,8 +3,10 @@
 ## 2026-07
 
 - [[papers/wang2024autonomousagents]]
-  - Scenario: Agent System Design and Agent Evaluation.
-  - Why listed here: Provides a field map for LLM-agent architecture, capabilities, applications, and evaluation.
+  - Title: A survey on large language model based autonomous agents
+  - Subarea: Agent architecture, capability acquisition, applications, and evaluation.
+  - Why listed here: Synthesizes early LLM-agent work into shared taxonomies centered on profile, memory, planning, action, and feedback.
 - [[papers/yao2023react]]
-  - Scenario: Knowledge-Intensive Reasoning and Interactive Decision Making.
-  - Why listed here: Defines a foundational thought–action–observation loop for language agents.
+  - Title: ReAct: Synergizing Reasoning and Acting in Language Models
+  - Subarea: Reasoning-and-acting policy for interactive language agents.
+  - Why listed here: Serializes thoughts, actions, and observations into one closed-loop trajectory that lets an LLM plan, use tools, and react to feedback.

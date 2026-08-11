@@ -370,10 +370,45 @@ For example, inside `indexes/areas/AI Infrastructure.md`:
 ## 2026-05
 
 - [[papers/wang2025jenga]]
-  - Scenario: Long-Context Fine-Tuning
-  - Why listed here: Uses token sparsity as an AI infrastructure technique for
-    efficient long-context LLM fine-tuning.
+  - Title: JENGA: Enhancing LLM Long-Context Fine-tuning with Contextual Token Sparsity
+  - Workload domain: Training and adaptation.
+  - System layer: Runtime and execution engine; operator and kernel optimization.
+  - Why listed here: Co-designs contextual token sparsity, pattern prediction,
+    and permutation-free kernels to reduce activation memory and computation.
 ```
+
+Use a nested entry with three second-level items by default:
+
+1. `Title`: the paper's exact full title.
+2. One index-specific perspective field.
+3. `Why listed here`: the paper's core idea, method, or contribution explained
+   from the viewpoint of the current index.
+
+Allow a fourth second-level item only when it answers a distinct question that
+researchers browsing that index are likely to care about. Do not split one idea
+across two fields or restate `Why listed here` under another label. Four is the
+maximum; explicit course or seminar contexts may use only two fields when an
+additional explanation would be redundant.
+
+Choose the perspective field by index type:
+
+- Area: `Subarea`. For a matrix-shaped area such as AI Infrastructure, the
+  independently useful `Workload domain` and `System layer` fields may replace
+  `Subarea`, producing a four-item entry.
+- Scenario: `Scenario focus`.
+- Topic: `Topic focus`.
+- Method: `Role in paper`; add `Mechanism` as the fourth field when role and
+  operation are both important and non-duplicative.
+- Dataset or benchmark: `Use in paper`, emphasizing how the data supports
+  training, evaluation, analysis, or a claim.
+- Venue: `Publication`.
+- Explicit reading context: a concise field such as `Course relevance` or
+  `Seminar focus`.
+
+Write each field as one compact sentence or phrase. Do not add authors, metrics,
+identifiers, or generic summaries merely to fill the structure. The same paper
+may need different `Why listed here` text in different indexes because readers
+arrive with different questions.
 
 Use broad research-area names that people commonly use in labs, courses, and
 reading groups. It is acceptable for one paper to appear in multiple broad areas

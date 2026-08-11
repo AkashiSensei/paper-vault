@@ -2,4 +2,7 @@
 
 ## 2026-05
 
-- [[papers/wang2025jenga]] - Extends efficient fine-tuning to long sequences by reducing token-block participation.
+- [[papers/wang2025jenga]]
+  - Title: JENGA: Enhancing LLM Long-Context Fine-tuning with Contextual Token Sparsity
+  - Scenario focus: Extending pretrained models to longer contexts under parameter-efficient fine-tuning.
+  - Why listed here: Complements LoRA-style parameter savings by reducing token participation, activation storage, and long-sequence training cost.

@@ -2,4 +2,7 @@
 
 ## 2026-05
 
-- [[papers/wang2025jenga]] - Complements LoRA-style PEFT by reducing activation memory rather than only trainable parameter state.
+- [[papers/wang2025jenga]]
+  - Title: JENGA: Enhancing LLM Long-Context Fine-tuning with Contextual Token Sparsity
+  - Topic focus: Activation-memory complement to parameter-efficient adaptation.
+  - Why listed here: Works alongside LoRA-style parameter savings by reducing the token activations that still dominate long-context fine-tuning.

@@ -3,5 +3,7 @@
 ## 2026-07
 
 - [[papers/wang2024autonomousagents]]
-  - Scenario: Agent System Design and Agent Evaluation.
-  - Why listed here: Defines categories for agent modules, capability acquisition, applications, and evaluation.
+  - Title: A survey on large language model based autonomous agents
+  - Role in paper: Organizational framework for comparing LLM-agent systems.
+  - Mechanism: Groups surveyed systems by architecture modules, capability acquisition, applications, and evaluation.
+  - Why listed here: Gives researchers a shared vocabulary for comparing otherwise heterogeneous LLM-agent designs.
