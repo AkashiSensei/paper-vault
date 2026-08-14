@@ -29,3 +29,16 @@ For navigation, classify each paper along both axes whenever useful: at least on
   - Workload domain: Training and adaptation.
   - System layer: Runtime and execution engine; operator and kernel optimization.
   - Why listed here: Co-designs contextual token sparsity, pattern prediction, and permutation-free kernels to reduce activation memory and computation in long-context fine-tuning.
+
+## 2026-08
+
+- [[papers/yu2022orca]]
+  - Title: Orca: A Distributed Serving System for Transformer-Based Generative Models
+  - Workload domain: Inference and serving.
+  - System layer: Runtime and distributed execution engine.
+  - Why listed here: Moves scheduling to token iterations and pairs it with selective batching to continuously refill model-parallel inference batches.
+- [[papers/kwon2023pagedattention]]
+  - Title: Efficient Memory Management for Large Language Model Serving with PagedAttention
+  - Workload domain: Inference and serving.
+  - System layer: KV-memory runtime and scheduler; attention kernel.
+  - Why listed here: Co-designs paged KV-cache allocation, PagedAttention, sharing, and preemption so fixed GPU memory supports more concurrent sequences.
