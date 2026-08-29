@@ -24,3 +24,14 @@ Use the following decision rule:
   - Title: ReAct: Synergizing Reasoning and Acting in Language Models
   - Subarea: LLM reasoning, tool use, and interactive agents.
   - Why listed here: Expands an LLM policy with natural-language thoughts and environment actions so external observations can ground and revise later reasoning.
+
+## 2026-08
+
+- [[papers/vaswani2017attention]]
+  - Title: Attention Is All You Need
+  - Subarea: Foundational Transformer architecture for language modeling and sequence transduction.
+  - Why listed here: Replaces recurrent and convolutional sequence processing with attention-based encoder-decoder blocks, establishing the architecture later scaled into modern LLMs.
+- [[papers/devlin2019bert]]
+  - Title: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+  - Subarea: Bidirectional language-model pretraining and transfer to language-understanding tasks.
+  - Why listed here: Pretrains one Transformer encoder with masked-token and sentence-relation objectives, then adapts it across token- and sentence-level tasks with minimal task-specific structure.
