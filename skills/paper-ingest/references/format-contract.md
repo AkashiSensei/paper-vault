@@ -42,6 +42,14 @@ Field conventions:
   was inspected, `medium` when using verified abstract/metadata, and `low` when
   relying on incomplete or secondary information.
 
+## Markdown Source Wrapping
+
+- In generated vault Markdown, use physical line breaks only when they express Markdown structure or a real semantic boundary.
+- Keep each prose paragraph on one physical source line and rely on the editor or renderer to soft-wrap it visually. Never insert hard line breaks merely to fit an arbitrary width such as 80 or 100 columns.
+- Keep each blockquote paragraph and each single logical list item on one physical source line. Use additional source lines only for separate list items, nested structure, deliberate paragraph breaks, or syntax that requires them.
+- Preserve structural line breaks for headings, blank lines between paragraphs, lists, tables, fenced code, and display math.
+- When revising an existing note, reflow the paragraphs touched by the task; do not mechanically rewrite unrelated sections solely to normalize historical wrapping.
+
 ## Required Section Order
 
 Every canonical paper note must use these headings in this exact order:
@@ -49,6 +57,7 @@ Every canonical paper note must use these headings in this exact order:
 ```markdown
 # {{title}}
 
+## Core Contribution
 ## Summary
 ## Problem
 ## Research Area And Scenario
@@ -75,6 +84,25 @@ workflows, not the initial paper note.
 Do not create a `My Understanding` section during ingestion. User
 interpretation belongs to later reading/refinement workflows, not the initial
 paper note.
+
+## Core Contribution As Immediate Orientation
+
+Place `Core Contribution` immediately before `Summary`. Write one short prose paragraph containing one or two sentences in the note's configured language.
+
+Make it answer two questions at a glance:
+
+- What does the paper principally introduce, change, demonstrate, or establish?
+- Why is that contribution immediately significant for the paper's problem or field?
+
+Name the actual contribution rather than writing a generic sentence such as "this paper proposes a new method." Omit detailed pipeline steps, benchmark numbers, relation history, and a list of limitations unless one boundary is essential to avoid misrepresenting the contribution.
+
+Keep the three orientation layers distinct:
+
+- `Core Contribution` is the **what and immediate significance** layer: a fast answer to what the paper mainly does.
+- `Summary` is the **whole-paper map**: the motivating problem, progression, major approach, evidence, and important boundary.
+- `Core Idea` is the **insight and why/how logic** layer: the observation or reframing that motivates the approach, why the authors expect it to work, and how the central mechanism realizes that insight.
+
+Necessary technical terms may recur across the three sections, but do not reuse a sentence or turn one section into a close paraphrase of another. Do not add a user-directed revision marker when `Core Contribution` is created as part of a new ingest under this default contract.
 
 ## User-Directed Revision Markers
 
@@ -118,7 +146,7 @@ ingestion, read-only review, typo fixes, or formatting-only changes.
 
 Use `Summary` to establish an overall mental model before the reader enters the
 detailed sections. It is not limited to one to three sentences and should not
-be treated as a lightly rewritten abstract.
+be treated as a lightly rewritten abstract or an expanded paraphrase of `Core Contribution`.
 
 Choose the structure that best fits the paper. A summary may use:
 
@@ -141,6 +169,12 @@ analytical interpretation when necessary. Write the summary in the same
 configured language as the rest of the paper note; never infer or impose a
 separate summary language. If the caller or intake configuration requests
 English paper notes, the summary must also be in English.
+
+## Core Idea As Explanatory Logic
+
+Use `Core Idea` to unpack the intellectual move behind the contribution. Explain the prior limitation, observation, or reframing that makes the approach sensible; why the authors expect the approach to work; and how the central mechanism embodies that reasoning.
+
+Keep this section above the implementation granularity of `Method`: explain the governing logic and decisive mechanism, not every component interface or training step. Do not merely repeat the contribution claim, retell the full `Summary`, or use experimental results as a substitute for the underlying idea.
 
 ## Research Positioning vs Applicability
 
@@ -447,6 +481,8 @@ Before reporting completion, verify:
 
 - There is exactly one H1 title.
 - All required headings exist in the required order.
+- `Core Contribution` appears immediately before `Summary` as one short paragraph of one or two sentences and names the paper's actual principal contribution.
+- `Core Contribution`, `Summary`, and `Core Idea` retain distinct what, whole-paper-map, and why/how roles without near-verbatim repetition.
 - `Summary` gives a compact pre-reading map of the paper's throughline and core
   logic, uses the note's configured language, and is not forced into a rigid
   layout.
@@ -467,3 +503,4 @@ Before reporting completion, verify:
 - No PDF file was added to the public repository.
 - Every substantive user-directed revision marker appears before the affected
   content or directly below its heading, and no location has stacked markers.
+- Every touched prose paragraph, blockquote paragraph, and single logical list item is stored on one physical source line and left to the editor or renderer for visual soft wrapping.

@@ -23,6 +23,7 @@ explicitly part of the task.
 
 - Keep the workflow tool-agnostic: use plain files, explicit paths, and
   portable Markdown/YAML conventions rather than client-specific commands.
+- Write generated vault Markdown with semantic source line breaks only: keep each prose paragraph on one physical line and let the editor or renderer soft-wrap it. Never hard-wrap prose at a fixed column; follow `references/format-contract.md#markdown-source-wrapping`.
 - When online search is needed, prefer AnySearch if that skill/tool is available
   and appropriate. If AnySearch is unavailable, fails, or is not present in the
   current AI environment, fall back to the environment's built-in search or
@@ -216,18 +217,21 @@ contract in `references/format-contract.md`.
 
 Write an initial note that is useful before deep human reading:
 
+- one- or two-sentence core contribution that makes the paper's main contribution legible at a glance
 - reader-oriented summary that establishes the paper's throughline and core
   logic before the detailed sections
 - research area and use scenario
 - assumptions and applicability boundaries, separated from research positioning
 - problem
-- core idea
+- core idea that explains the key insight, rationale, and mechanism behind the contribution
 - method
 - experiments/evidence
 - key takeaways
 - limitations
 - relation blocks
 - index file updates, without writing reverse index links into the paper note
+
+Write `Core Contribution` before `Summary` as one short paragraph of one or two sentences. State what the paper principally introduces, changes, or establishes and why that matters; leave the full paper map to `Summary` and the underlying insight, rationale, and central mechanism to `Core Idea`.
 
 Treat `Summary` as a compact pre-reading guide, not as a fixed one-to-three
 sentence abstract rewrite. Choose the small Markdown structure that best fits
@@ -456,6 +460,7 @@ Before reporting completion, check:
 - one canonical note exists for the paper
 - all required frontmatter keys are present
 - required headings are present in order
+- `Core Contribution` precedes `Summary`, stays within one or two sentences, and is substantively distinct from both `Summary` and `Core Idea`
 - `Experiments And Evidence` uses a comparison map when it clarifies the
   evidence, includes original-paper locations, and preserves important evidence
   that the map cannot cover
@@ -471,6 +476,7 @@ Before reporting completion, check:
 - no PDF file was added to the public repository
 - user-directed revision markers precede the affected content or sit directly
   below its heading, with no stacked markers at the same location
+- every touched prose paragraph, blockquote paragraph, and single logical list item uses one physical source line instead of fixed-column hard wrapping
 
 ## Failure Handling
 

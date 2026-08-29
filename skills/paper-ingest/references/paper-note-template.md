@@ -3,6 +3,10 @@
 Use this template when creating a canonical paper note. Keep the structure stable
 enough for humans, Obsidian, and AI agents to read consistently.
 
+## Source-Line Convention
+
+In generated notes, keep each prose paragraph, blockquote paragraph, and single logical list item on one physical source line. Use source line breaks only for Markdown structure or genuine paragraph boundaries, and rely on the editor or renderer for visual soft wrapping. When revising an existing note, reflow only the paragraphs touched by the task.
+
 ```markdown
 ---
 citekey: null
@@ -34,6 +38,10 @@ updated: null
 
 # {{title}}
 
+## Core Contribution
+
+In one short paragraph of one or two sentences, state what the paper principally introduces, changes, demonstrates, or establishes and why that contribution matters. Make the paper's main action legible at a glance; leave the whole-paper map to `Summary` and the underlying insight and why/how mechanism to `Core Idea`.
+
 ## Summary
 
 Write a compact pre-reading overview in the same configured language as the
@@ -45,7 +53,7 @@ Give the reader a mental model of the motivating question, the paper's
 progression, the core logic connecting its major parts, and why the result
 matters. Mention major modules when they clarify the map, but leave detailed
 component descriptions, interfaces, evidence, and caveats to the later
-sections.
+sections. Do not simply expand or closely paraphrase `Core Contribution`.
 
 ## Problem
 
@@ -93,7 +101,7 @@ What problem does the paper address? Why is the problem important?
 
 ## Core Idea
 
-What is the central insight or mechanism?
+Explain the key observation, limitation, or reframing that motivates the contribution, why the authors expect their approach to work, and how the central mechanism realizes that reasoning. Keep this distinct from the contribution claim and leave component-level implementation detail to `Method`.
 
 ## Method
 
