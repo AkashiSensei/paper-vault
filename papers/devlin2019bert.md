@@ -51,7 +51,7 @@ verification_notes:
   - "Reported leaderboard comparisons are historical snapshots from the paper; they are retained as evidence for the original claim, not as current rankings."
   - "The 93.2 SQuAD v1.1 Test F1 headline uses a seven-model ensemble and TriviaQA augmentation; single-model and no-augmentation results are distinguished below."
 created: 2026-08-16
-updated: 2026-08-29
+updated: 2026-08-30
 ---
 
 # BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
@@ -263,8 +263,9 @@ BERTBASE uses 12 Transformer blocks, hidden size 768, 12 attention heads, and 11
 - Title: Improving Language Understanding by Generative Pre-Training
   Authors: Alec Radford; Karthik Narasimhan; Tim Salimans; Ilya Sutskever.
   URL: https://openai.com/index/language-unsupervised/
+  Obsidian: [[radford2018improving]]
   - Type: compares-with
-  - Status: not-ingested
+  - Status: ingested
   - Work summary: Adapts a causal Transformer decoder to generative pre-training on BooksCorpus and then fine-tunes it for diverse language-understanding tasks with task-aware input transformations.
   - Similarity: Both pre-train a Transformer on unlabeled text, reuse pretrained parameters through end-to-end fine-tuning, and minimize task-specific architecture; BERTBASE is sized to make GPT a meaningful reference point.
   - Difference: GPT predicts tokens left-to-right with causal attention, whereas BERT uses an encoder with bidirectional attention, MLM, NSP, segment embeddings, and a larger pre-training corpus.

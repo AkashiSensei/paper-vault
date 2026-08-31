@@ -35,3 +35,11 @@ Use the following decision rule:
   - Title: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
   - Subarea: Bidirectional language-model pretraining and transfer to language-understanding tasks.
   - Why listed here: Pretrains one Transformer encoder with masked-token and sentence-relation objectives, then adapts it across token- and sentence-level tasks with minimal task-specific structure.
+- [[papers/radford2018improving]]
+  - Title: Improving Language Understanding by Generative Pre-Training
+  - Subarea: Causal decoder-only pre-training and supervised task transfer.
+  - Why listed here: Establishes the original GPT pipeline: learn a reusable causal Transformer from unlabeled text, serialize heterogeneous task inputs as token sequences, and fine-tune the full model with minimal task-specific structure.
+- [[papers/radford2019language]]
+  - Title: Language Models are Unsupervised Multitask Learners
+  - Subarea: Web-scale causal language modeling and zero-shot task transfer.
+  - Why listed here: Scales the GPT architecture, objective, and training corpus, then treats downstream tasks as conditional language modeling without task-specific parameter updates.
