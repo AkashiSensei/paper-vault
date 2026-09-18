@@ -43,3 +43,18 @@ Use the following decision rule:
   - Title: Language Models are Unsupervised Multitask Learners
   - Subarea: Web-scale causal language modeling and zero-shot task transfer.
   - Why listed here: Scales the GPT architecture, objective, and training corpus, then treats downstream tasks as conditional language modeling without task-specific parameter updates.
+
+## 2026-09
+
+- [[papers/yehudai2026evaluation]]
+  - Title: A Survey on Evaluation of LLM-based Agents
+  - Subarea: Evaluation of LLM backbones embedded in interactive agent harnesses.
+  - Why listed here: Shows why model-only response metrics cannot explain planning, tool use, memory, trajectory, cost, and safety behavior once an LLM controls an agent.
+- [[papers/mohammadi2025evaluation]]
+  - Title: Evaluation and Benchmarking of LLM Agents: A Survey
+  - Subarea: Operational evaluation of LLM-agent behavior, capabilities, reliability, and alignment.
+  - Why listed here: Organizes evidence about LLM-based agents across objective and process axes, including judge methods, repeated runs, and online monitoring.
+- [[papers/zhu2027evolutionary]]
+  - Title: Evolutionary perspectives on the evaluation of LLM-based AI agents: a comprehensive survey
+  - Subarea: Evolution from LLM chatbots to environmentally situated agents.
+  - Why listed here: Identifies which changes beyond text generation require new benchmarks and relates external environments to planning, reflection, interaction, and memory capabilities.
