@@ -25,3 +25,7 @@
   - Title: Evolutionary perspectives on the evaluation of LLM-based AI agents: a comprehensive survey
   - Subarea: Environment- and capability-centered benchmark taxonomy and selection.
   - Why listed here: Explains how agentic environments and internal capabilities jointly determine appropriate tests and how evaluation coverage should evolve with the agent.
+- [[papers/fu2025c2c]]
+  - Title: Cache-to-Cache: Direct Semantic Communication Between Large Language Models
+  - Subarea: Communication primitives for collaborative multi-LLM/multi-agent systems.
+  - Why listed here: Offers an alternative to the text messaging that collaborative agent systems rely on, fusing KV-Cache directly between co-located models; the paper frames general agentic deployment as future work rather than a demonstrated setting.
