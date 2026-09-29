@@ -58,3 +58,7 @@ Use the following decision rule:
   - Title: Evolutionary perspectives on the evaluation of LLM-based AI agents: a comprehensive survey
   - Subarea: Evolution from LLM chatbots to environmentally situated agents.
   - Why listed here: Identifies which changes beyond text generation require new benchmarks and relates external environments to planning, reflection, interaction, and memory capabilities.
+- [[papers/fu2025c2c]]
+  - Title: Cache-to-Cache: Direct Semantic Communication Between Large Language Models
+  - Subarea: Multi-LLM communication and collaboration; representation-level semantic transfer between models.
+  - Why listed here: The object of study is how LLMs exchange contextual understanding—replacing text messaging with trained KV-Cache fusion—so the research question is about model behavior and use, not a serving or memory subsystem.
